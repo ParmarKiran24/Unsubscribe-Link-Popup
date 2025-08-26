@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unsubscribe</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h3 {
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    .instructions {
+      font-size: 18px;
+      color: #333;
+      margin: 20px 0;
+      line-height: 0.9;
+    }
+
+    input[type="email"] {
+      padding: 14px;
+      width: 300px;
+      font-size: 16px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #e74c3c;
+      color: white;
+      font-size: 18px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 25px;
+    }
+
+    #successMessage {
+      margin-top: 25px;
+      color: green;
+      font-size: 16px;
+      border: 1px solid green;
+      padding: 14px;
+      display: none;
+    }
+
+    /* Popup Styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .popup-content {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 350px;
+      margin: 120px auto;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .popup-content button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h3>Kindly fill your details to Unsubscribe</h3>
+  <div class="instructions">
+    You have requested to be removed from RS Americas Inc for all future e-mail deliveries. <br><br>
+    To confirm this click 'Submit' button. If you take no action, you will not be removed.
+  </div>
+  <input type="email" id="email" placeholder="Enter your email" required />
+  <br>
+  <button onclick="openPopup()">Unsubscribe</button>
+
+  <div id="successMessage">
+    You have successfully unsubscribed from our newsletter. Your email address has also been removed from our mailing list. You will receive no more emails from us.
+  </div>
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <p>Are you sure you want to unsubscribe?</p>
+    <button onclick="confirmUnsubscribe()">Submit</button>
+    <button onclick="closePopup()">Cancel</button>
+  </div>
+</div>
+
+<script>
+  function openPopup() {
+    const email = document.getElementById("email").value;
+    if (!email) {
+      alert("Please enter your email address.");
+      return;
+    }
+    document.getElementById("popup").style.display = "block";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+
+  function confirmUnsubscribe() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("successMessage").style.display = "block";
+  }
+</script>
+
+</body>
+</html>
